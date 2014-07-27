@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import re
 
 regex = re.compile("^<(?P<name>.*)>\s*(?P<email>.*@.*)")
