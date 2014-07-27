@@ -1,4 +1,4 @@
-https://www.djangoproject.com/download/1.7c1/tarball/
+https://www.djangoproject.com/download/1.7c2/tarball/
 markdown==2.4.1
 argparse==1.2.1
 dj-database-url==0.3.0
