@@ -74,3 +74,10 @@ local.properties
 
 # Foreman
 server/.env
+
+# Client
+client/node_modules
+client/dist
+client/.tmp
+client/.sass-cache
+client/bower_components
