@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 import re
 
-regex = re.compile("^<(?P<name>.*)>\s*(?P<email>.*@.*)")
+regex = re.compile('^<(?P<name>.*)>\s*(?P<email>.*@.*)')
 
 
 def parse_emails(emails):
     """
     Parse a list of emails of the following format:
     <John Doe> john@abc.com, <Betty Boo> boo@bbs.com
-    :param string:
+    :param str emails: "Comma separated emails"
     :return: A list of name, email tuples
+    :rtype: list
     """
     if not emails:
         return []
@@ -24,6 +25,13 @@ def parse_emails(emails):
 
 
 def bool_value(value, default=False):
+    """
+    Convert strings like 'yes', 'y', 'true', '1',
+    'no', 'n', 'false', '0' or '' to boolean values.
+    :param str value: "Value to parse to bool"
+    :param bool default: "Default value if unable to convert"
+    :rtype: bool
+    """
     if not value:
         return default
 

@@ -6,7 +6,7 @@ import re
 
 def load_env():
     """
-    Read .env file and set the corresponding environment variables
+    Load .env file to the environment
     """
     try:
         with open('.env') as f:

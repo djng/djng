@@ -11,6 +11,7 @@ import dj_database_url
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+CLIENT_BASE_DIR = os.path.join(BASE_DIR, '../client')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET')
@@ -82,21 +83,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static file and template locations
 if DEBUG:
+    CLIENT_ASSET_DIRS = os.walk(os.path.join(CLIENT_BASE_DIR, 'app')).next()[1]
     TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR, '../client/app'),
-    )
-
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, '../client/app/static'),
-        os.path.join(BASE_DIR, '../client/.tmp/static'),
+        os.path.join(CLIENT_BASE_DIR, 'app'),
     )
 else:
+    CLIENT_ASSET_DIRS = os.walk(os.path.join(CLIENT_BASE_DIR, 'dist')).next()[1]
     TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR, '../client/dist'),
+        os.path.join(CLIENT_BASE_DIR, 'dist'),
     )
 
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, '../client/dist/static'),
+        os.path.join(CLIENT_BASE_DIR, 'dist'),
     )
 
 # Mail
