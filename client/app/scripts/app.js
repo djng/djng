@@ -1,25 +1,35 @@
 'use strict';
 
+/**
+ * @ngdoc overview
+ * @name clientApp
+ * @description
+ * # clientApp
+ *
+ * Main module of the application.
+ */
 angular
-  .module('app', [
+  .module('clientApp', [
+    'ngAnimate',
+    'ngAria',
     'ngCookies',
+    'ngMessages',
     'ngSanitize',
+    'ngTouch',
     'ui.router',
     'restangular'
   ])
-  .config(function ($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider, $provide) {
+  .config(function ($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('home', {
-        url: "/",
+        url: '/',
         controller: 'MainCtrl',
-        templateUrl: "static/views/main.html"
+        templateUrl: 'views/main.html'
       });
-
-    $provide.constant('tasks', angular.fromJson(angular.copy(window.tasks)).tasks);
   });

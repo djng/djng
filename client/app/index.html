@@ -1,9 +1,7 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="app"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="app"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="app"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="app"> <!--<![endif]-->
+<html class="no-js">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>djng</title>
     <meta name="description" content="">
@@ -11,22 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <meta http-equiv="cleartype" content="on">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/touch/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/touch/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/touch/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="static/images/touch/apple-touch-icon-57x57.png">
-    <link rel="shortcut icon" href="static/images/touch/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-57x57.png">
+    <link rel="shortcut icon" href="images/touch/apple-touch-icon.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="static/images/touch/apple-touch-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="images/touch/apple-touch-icon-144x144.png">
     <meta name="msapplication-TileColor" content="#222222">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css({.tmp,app}) static/styles/main.css -->
-    <link rel="stylesheet" href="static/styles/main.css">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="clientApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,40 +30,29 @@
     <!-- Add your site or application content here -->
     <div class="site-wrapper" ui-view></div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
-    <script>
-      window.tasks = {{ tasks|safe }};
-    </script>
-
+    <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
-    <!-- build:js static/scripts/ie.js -->
-    <script src="static/bower_components/es5-shim/es5-shim.js"></script>
-    <script src="static/bower_components/json3/lib/json3.min.js"></script>
-    <!-- endbuild -->
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
-
-    <!-- build:js static/scripts/vendor.js -->
-    <script src="static/bower_components/lodash/dist/lodash.js"></script>
-    <script src="static/bower_components/angular/angular.js"></script>
-    <script src="static/bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="static/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="static/bower_components/restangular/dist/restangular.js"></script>
-    <script src="static//bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) static/scripts/scripts.js -->
-    <script src="static/scripts/app.js"></script>
-    <script src="static/scripts/controllers/main.js"></script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -1,7 +1,5 @@
-$icon-font-path: "/static/styles/fonts/bootstrap/";
-
-@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
 .browsehappy {
     margin: 0.21em 0;
@@ -30,7 +28,6 @@ a:hover {
   background-color: #fff;
   border: 1px solid #fff;
 }
-
 
 /*
  * Base structure
@@ -69,7 +66,6 @@ body {
 .inner {
   padding: 30px;
 }
-
 
 /*
  * Header
@@ -116,7 +112,6 @@ body {
   }
 }
 
-
 /*
  * Cover
  */
@@ -129,7 +124,6 @@ body {
   font-weight: bold;
 }
 
-
 /*
  * Footer
  */
@@ -138,7 +132,6 @@ body {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
 }
-
 
 /*
  * Affix and center
