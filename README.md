@@ -24,7 +24,7 @@ Prerequisites
    Also create a user and database for your project.
  * Installed [Node.js](http://nodejs.org/).
  * Installed [Grunt](http://gruntjs.com/getting-started) and [Bower](http://bower.io/#install-bower).
- * Installed [Compass](http://compass-style.org/install/)
+ * Installed [Compass](http://compass-style.org/install/).
  * Installed [Heroku Toolbelt](https://toolbelt.heroku.com/).
  * A Heroku user account. [Signup is free and instant](https://signup.heroku.com/signup/dc).
 
@@ -38,16 +38,41 @@ _Make sure you like what's inside [djng.sh](https://github.com/djng/djng-init/ra
 
 Developing
 ----------
+Watch for changes in your client:
+
+    cd client
+    grunt watch
+
 Run the django development server:
 
     source venv/bin/activate
     cd server
     python manage.py runserver_plus
 
-Watch for changes in your client:
+### Developing locally with Foreman
+
+If you want to execute your local development environment in the same manner as the remote environment 
+you can use [Foreman](https://github.com/ddollar/foreman) (it’s installed automatically by the Heroku Toolbelt) to run your Procfile-backed app.
+
+Build your client:
 
     cd client
-    grunt watch
+    grunt build
+    
+Set `DJANGO_DEBUG=False` in `server/.env` and collect the static files:
+
+    cd server
+    ./manage.py collectstatic --noinput
+
+Run foreman:
+    
+    foreman start -e server/.env
+
+
+This ensures that incompatibilities and hard to find bugs are caught before deploying to 
+production and treats the application as a holistic unit instead of a series of individual
+commands working independently.
+
 
 Deploying
 ---------
