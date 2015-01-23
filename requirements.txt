@@ -1,6 +1,5 @@
 argparse==1.2.1
 dj-database-url==0.3.0
-dj-static==0.0.6
 django-extensions==1.4.9
 django-filter==0.9.1
 Django==1.7.1
@@ -12,5 +11,5 @@ Pillow==2.6.1
 psycopg2==2.5.4
 pytz==2014.10
 six==1.8.0
-static3==0.5.1
+whitenoise==1.0.6
 wsgiref==0.1.2

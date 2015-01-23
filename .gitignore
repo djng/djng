@@ -70,7 +70,7 @@ local.properties
 *.launch
 
 # PyChram
-.idea/
+.idea
 
 # Foreman
 server/.env
@@ -80,4 +80,4 @@ client/node_modules
 client/dist
 client/.tmp
 client/.sass-cache
-client/bower_components
+client/app/static/bower_components

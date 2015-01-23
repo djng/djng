@@ -30,6 +30,6 @@ angular
       .state('home', {
         url: '/',
         controller: 'MainCtrl',
-        templateUrl: 'views/main.html'
+        templateUrl: 'static/views/main.html'
       });
   });

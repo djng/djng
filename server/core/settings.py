@@ -80,21 +80,25 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Static file and template locations
 if DEBUG:
-    CLIENT_ASSET_DIRS = os.walk(os.path.join(CLIENT_BASE_DIR, 'app')).next()[1]
     TEMPLATE_DIRS = (
         os.path.join(CLIENT_BASE_DIR, 'app'),
     )
+
+    STATICFILES_DIRS = (
+        os.path.join(CLIENT_BASE_DIR, 'app', 'static'),
+        os.path.join(CLIENT_BASE_DIR, '.tmp', 'static')  # Generated CSS files
+    )
 else:
-    CLIENT_ASSET_DIRS = os.walk(os.path.join(CLIENT_BASE_DIR, 'dist')).next()[1]
     TEMPLATE_DIRS = (
         os.path.join(CLIENT_BASE_DIR, 'dist'),
     )
 
     STATICFILES_DIRS = (
-        os.path.join(CLIENT_BASE_DIR, 'dist'),
+        os.path.join(CLIENT_BASE_DIR, 'dist', 'static'),
     )
 
 # Mail
