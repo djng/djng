@@ -32,9 +32,9 @@ Bootstrap your project
 ----------------------
 
 	mkdir myproject && cd $_
-    wget -qO- https://github.com/djng/djng-init/raw/master/djng.sh | bash
+    wget -qO- https://raw.githubusercontent.com/djng/djng-init/master/djng.sh | bash
     
-_Make sure you like what's inside [djng.sh](https://github.com/djng/djng-init/raw/master/djng.sh)._
+_Make sure you like what's inside [djng.sh](https://raw.githubusercontent.com/djng/djng-init/master/djng.sh)._
 
 Developing
 ----------
