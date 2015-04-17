@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_lazy as _
+
 from accounts.models import BaseUser
 
 
@@ -26,7 +27,7 @@ class BaseUserCreationForm(forms.ModelForm):
         fields = ('email',)
 
     def clean_email(self):
-        # Since User.username is unique, this check is redundant,
+        # Since User.email is unique, this check is redundant,
         # but it sets a nicer error message than the ORM. See #13147.
         email = self.cleaned_data["email"]
         try:
@@ -83,6 +84,7 @@ class BaseUserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
+@admin.register(BaseUser)
 class BaseUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -104,6 +106,3 @@ class BaseUserAdmin(UserAdmin):
     search_fields = ('first_name', 'last_name', 'email')
     ordering = ('email',)
     filter_horizontal = ('groups', 'user_permissions',)
-
-# Now register the new UserAdmin...
-admin.site.register(BaseUser, BaseUserAdmin)

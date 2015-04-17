@@ -3,11 +3,12 @@ Django settings. Environment specific values are loaded from the environment.
 """
 
 import sys
-
 import os
 import re
-from env_utils import parse_emails, bool_value
+
 import dj_database_url
+
+from env_utils import parse_emails, bool_value
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -48,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 )
 
@@ -84,7 +86,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Static file and template locations
 if DEBUG:
-    TEMPLATE_DIRS = (
+    DJANGO_TEMPLATE_DIRS = (
         os.path.join(CLIENT_BASE_DIR, 'app'),
     )
 
@@ -93,13 +95,29 @@ if DEBUG:
         os.path.join(CLIENT_BASE_DIR, '.tmp', 'static')  # Generated CSS files
     )
 else:
-    TEMPLATE_DIRS = (
+    DJANGO_TEMPLATE_DIRS = (
         os.path.join(CLIENT_BASE_DIR, 'dist'),
     )
 
     STATICFILES_DIRS = (
         os.path.join(CLIENT_BASE_DIR, 'dist', 'static'),
     )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': DJANGO_TEMPLATE_DIRS,
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 # Mail
 FORM_MAIL = os.environ.get('DJANGO_FROM_MAIL')

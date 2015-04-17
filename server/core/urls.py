@@ -2,12 +2,15 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.utils.translation import ugettext_lazy
 
-from core.admin import admin_site
-
+admin.site.site_title = ugettext_lazy('My site admin')
+admin.site.site_header = ugettext_lazy('My administration')
+admin.site.index_title = ugettext_lazy('Site administration')
 
 urlpatterns = patterns('',
-                       url(r'^admin/', include(admin_site.urls)),
+                       url(r'^admin/', include(admin.site.urls)),
                        url(r'^api/', include('api.urls')))
 
 # Add client urls for debug mode

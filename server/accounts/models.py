@@ -7,6 +7,8 @@ from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
+    use_in_migrations = True
+
     def _create_user(self, email, password,
                      is_staff, is_superuser, **extra_fields):
         """
@@ -18,7 +20,7 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email,
                           is_staff=is_staff, is_active=True,
-                          is_superuser=is_superuser, last_login=now,
+                          is_superuser=is_superuser,
                           date_joined=now, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -34,7 +36,7 @@ class UserManager(BaseUserManager):
 
 
 class BaseUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), max_length=255, unique=True)
+    email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
