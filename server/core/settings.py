@@ -8,7 +8,7 @@ import re
 
 import dj_database_url
 
-from env_utils import parse_emails, bool_value
+from core.env_utils import parse_emails, bool_value
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
