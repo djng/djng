@@ -90,9 +90,9 @@ How it works
 This section covers the setup project process as done by djng-init,
 the interaction between the client and the server and the Heroku deployment.
 
-###Environment
+### Environment
 
-####Django server
+#### Django server
 
 [Virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) is used to create an isolated Python environment
 for the Django server. The requirements are kept in requirements.txt and requirements_dev.txt:
@@ -118,7 +118,7 @@ This environment is conveniently loaded by `manage.py` for local development. On
 managed by [config vars](https://devcenter.heroku.com/articles/config-vars). This project uses the handy 
 [heroku-config](https://github.com/ddollar/heroku-config) plugin to manage the configuration.
 
-#####AngularJs Client
+##### AngularJs Client
 
 All client dependencies are managed by npm and bower:
 
@@ -126,7 +126,7 @@ All client dependencies are managed by npm and bower:
     npm install
     bower install
 
-###Serving static assets
+### Serving static assets
 
 All static assets are served by [WhiteNoise](http://whitenoise.evans.io/en/latest/) in production to keep things simple. 
 During local development the files are served by the [django.contrib.staticfile](https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#module-django.contrib.staticfiles) 
@@ -135,7 +135,7 @@ app directly from the client directory.
 **Note:** As this is a SPA Django needs to catch all URLs handled by the client and return the index.html.
 Therefore this URL pattern has to come last in your `urls.py` as it would otherwise override all other url definitions.
 
-###Heroku Deployment
+### Heroku Deployment
 
 This project uses [heroku-buildpack-multi](https://github.com/heroku/heroku-buildpack-multi) to run two buildpacks. 
 One is [heroku-buildpack-webapp-client](https://github.com/djng/heroku-buildpack-webapp-client) to build the client and 
